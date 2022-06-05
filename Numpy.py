@@ -8,11 +8,13 @@ a = np.array([1, 2, 3])
 print(a)
 print(type(a))
 print(a.shape)  # 1次元配列で3要素ある
+print(a.dtype)  # デフォルトはint32(32ビット)
 
 """
 [1 2 3]
 <class 'numpy.ndarray'>
 (3,)
+int32
 """
 # 2次元配列
 b = np.array([[1, 2, 3], [4, 5, 6]])
@@ -42,3 +44,15 @@ print(c3)
 
 c4 = c2.flatten()
 print(c4)
+
+# dtype========================================================
+
+# 配列生成時にビット数を指定することが可能
+d = np.array([1, 2], dtype = np.int16)
+print(d.dtype)
+# ⇒ int16
+
+# astype() ⇒ 浮動小数型や真偽型に変換
+d2 = d.astype(np.float16)
+print(d2.dtype)
+# ⇒ float16
