@@ -75,6 +75,19 @@ print()
  [[1. 1. 1.]
  [1. 1. 1.]]
 """
+
+# full() ⇒ 任意の要素・大きさ で行列を作る
+
+print(np.full(3, 3.14))
+print(np.full((2, 3), 3.14))
+print()
+"""
+[3.14 3.14 3.14]
+
+[[3.14 3.14 3.14]
+ [3.14 3.14 3.14]]
+"""
+
 # eye() ⇒ 単位行列
 print(np.eye(3))
 print()
@@ -97,3 +110,11 @@ print(np.eye(5))
  [0. 0. 0. 1. 0.]
  [0. 0. 0. 0. 1.]]
 """
+
+# NAN(Not a Number)
+
+print(np.array([1, 2, np.nan]))
+# ⇒ [ 1.  2. nan]
+
+
+print(type(np.nan))
