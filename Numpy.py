@@ -56,3 +56,16 @@ print(d.dtype)
 d2 = d.astype(np.float16)
 print(d2.dtype)
 # ⇒ float16
+
+# インデックス・スライス
+a = np.array([1, 2, 3])
+b = np.array([[1, 2, 3], [4, 5, 6]])
+
+print(a[1:])
+# ⇒ [2 3]
+
+print(b[:, 2])
+# ⇒ [3 6]
+
+print(b[1, :])
+# ⇒ [4 5 6]
