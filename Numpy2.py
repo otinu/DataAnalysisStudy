@@ -112,9 +112,11 @@ print(np.eye(5))
 """
 
 # NAN(Not a Number)
+# Noneや空文字ではエラーが発生してしまう場合に代わりに使われる
 
 print(np.array([1, 2, np.nan]))
 # ⇒ [ 1.  2. nan]
 
-
+# float型に分類
 print(type(np.nan))
+# ⇒ <class 'float'>
