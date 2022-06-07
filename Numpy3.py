@@ -21,10 +21,9 @@ print(np.concatenate([[0, 1, 2], [3, 4]]))
 print()
 # ⇒ [0 1 2 3 4]
 
-b = np.array([[1, 2, 8], [4, 5, 8]])
-b1 = np.array([[10], [20]])
-
 # bの各要素末尾にb1の各要素を追加
+b = np.array([[1, 2, 8], [4, 5, 8]])
+b1 = np.array([[10], [20]])    # 要素数はbの1次元目の要素数と合わせないとエラー
 print(np.concatenate([b, b1], axis = 1))
 print(np.hstack([b, b1])) # hstack()でも同様
 """
@@ -33,7 +32,7 @@ print(np.hstack([b, b1])) # hstack()でも同様
 """
 
 # bの要素にb1を追加
-b2 = np.array([100, 200, 300])
+b2 = np.array([100, 200, 300]) # 要素数はbの2次元目の要素数と合わせないとエラー
 print(np.vstack([b, b2]))
 """
 [[  1   2   8]
