@@ -59,6 +59,9 @@
         ◎「データを再利用するために、データの凍結・変換（直列化）と保存（永続化）」一度に行うモジュールです
             通常、プログラムで生成したデータは、プログラムの終了時に消えます。プログラムの終了後もそのデータを利用したい時などにpickleを使います。
 
+        ・読み込み ⇒ 非直列化
+        ・書き込み ⇒ 直列化
+
 """
 
 """
@@ -150,17 +153,18 @@ https://gist.github.com/otinu/e8c2c3b0d10c5a99dd6ea18abdde802c?permalink_comment
 ③ならば、最初から【行列4×1 と 行列1×3 の積を求める計算をすればいい】という考え
 　⇒【説明変数の次元数を削減すればいい】 と表現される
 
-###  @演算子
+###  @演算子 / dot()
 
-Pythonでは@演算子によってドット積(行列どうしの積)を求めることができる
+Pythonでは@演算子 または dot() によってドット積(行列どうしの積)を求めることができる
 a = np.array([1, 3])    # [1 3]
 b = np.array([-1, 5])   # [-1 5]
 
 d = a @ b
+d = np.dot(a, b)
 print(d)
 """
 # [1 3] @ [-1 5] = [(1 * -1) + (3 * 5) = 14
-#https://study.prime-strategy.co.jp/wp-content/uploads/2021/01/%E7%AC%AC1%E5%9B%9E_Python3%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E6%A8%A1%E8%A9%A6_%E7%AC%AC19%E5%95%8Fd-2.png
+# https://study.prime-strategy.co.jp/wp-content/uploads/2021/01/%E7%AC%AC1%E5%9B%9E_Python3%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E6%A8%A1%E8%A9%A6_%E7%AC%AC19%E5%95%8Fd-2.png
 """
 
 
