@@ -99,6 +99,7 @@
 ・sin ⇒ 正弦
 ・cos ⇒ 余弦
 ・tan ⇒ 正接
+https://gist.github.com/otinu/e8c2c3b0d10c5a99dd6ea18abdde802c?permalink_comment_id=4196976#gistcomment-4196976
 
 ##ベクトル
     [サンプル]
@@ -149,11 +150,61 @@ https://gist.github.com/otinu/e8c2c3b0d10c5a99dd6ea18abdde802c?permalink_comment
 ③ならば、最初から【行列4×1 と 行列1×3 の積を求める計算をすればいい】という考え
 　⇒【説明変数の次元数を削減すればいい】 と表現される
 
+###  @演算子
+
+Pythonでは@演算子によってドット積(行列どうしの積)を求めることができる
+a = np.array([1, 3])    # [1 3]
+b = np.array([-1, 5])   # [-1 5]
+
+d = a @ b
+print(d)
+"""
+# [1 3] @ [-1 5] = [(1 * -1) + (3 * 5) = 14
+#https://study.prime-strategy.co.jp/wp-content/uploads/2021/01/%E7%AC%AC1%E5%9B%9E_Python3%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90%E6%A8%A1%E8%A9%A6_%E7%AC%AC19%E5%95%8Fd-2.png
+"""
+
+
 ###積分
 [サンプル]
 　6x^2（6掛けるxの二乗）
 
 ◎サンプルを積分する とは、「Xの微分」 = サンプル + C(定数)　ということ
 　⇒ (2(指数)+ 1)x = 6　をイメージすると求められる
+　　⇒ サンプルの積分は、 2x^3 + C となる
 https://gist.github.com/otinu/e8c2c3b0d10c5a99dd6ea18abdde802c?permalink_comment_id=4196940#gistcomment-4196940
+
+・サンプルについて、2x^3, 2x^3 + 1, 2x^3 + 2, 2x^3 - 1 はいずれもサンプルの【不定積分】
+https://goukaku-suppli.com/archives/38126
+
+・「サンプルを1～2まで積分」した場合などを【定積分】という
+　⇒サンプルを積分した後にx=1の場合とx=2の場合の和を求める
+https://gist.github.com/otinu/e8c2c3b0d10c5a99dd6ea18abdde802c?permalink_comment_id=4196947#gistcomment-4196947
+https://goukaku-suppli.com/archives/38253
+
+
+◎微分は傾き、積分は面積と捉えることができる。
+
+・データ分析や機会学習において、
+　予測と測定値の接点 = 関数の傾きがゼロの点 ⇒ 有益な情報　となる
+https://study.prime-strategy.co.jp/wp-content/uploads/2021/01/%E5%8B%BE%E9%85%8D%E9%99%8D%E4%B8%8B%E6%B3%95-1536x398.png
+
+・x^3 + 2y^2 + 4z^4　のように、変数が複数存在する場合の微分を【偏微分】という。
+　⇒偏微分ではどの変数で微分したのか示す必要がある
+https://study.prime-strategy.co.jp/wp-content/uploads/2021/01/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%898-6-1536x864.png
+"""
+
+"""
+#確立と統計
+
+・統計における中央値は全てのサンプル(データ)を順に並べた際の真ん中の値
+　⇔平均値はサンプル総量の真ん中の値のイメージ。混同に注意
+https://study.prime-strategy.co.jp/wp-content/uploads/2021/01/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%893-9-1536x864.png
+
+・分散とは「すべてのデータの平均値からの差分を、2乗して、データの個数で割った値」
+
+・6面体のサイコロを1回振った場合、その出目の数自体は不明なものの、奇数がでていることを教えられたとする。
+　この場合の確率を条件付き確率と呼び、これはベイズの定理の基本となっている。
+
+・確率変数が離散的な場合は確率質量関数、連続的な場合が確率密度関数
+　⇒標準正規分布などの確率分布は、確率密度関数から得られます。
 """
