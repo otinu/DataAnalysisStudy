@@ -108,7 +108,7 @@ https://gist.github.com/otinu/e8c2c3b0d10c5a99dd6ea18abdde802c?permalink_comment
     [サンプル]
     A. (3,4)、 B. (4,7)、 C. (2,4,5)
 
-・A + C や A + B のように、次元数の異なるベクトルの計算は不可
+・A + C や B + C のように、次元数の異なるベクトルの計算は不可
 
 ###ユークリッド距離
 
