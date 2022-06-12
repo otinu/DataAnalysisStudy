@@ -98,5 +98,23 @@ tree.fit(X_train, y_train)
 y_pred = tree.predict(X_test)
 print(y_pred)
 
+# metricsモジュールのclassification_report() を利用
+    # ⇒ モデルの評価を実行
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred))
+"""
+precision: 適合率
+recall: 再現率
+f1-score: F値
+support: データ数
+
+             precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        18
+           1       0.77      1.00      0.87        10
+           2       1.00      0.82      0.90        17
+
+    accuracy                           0.93        45
+   macro avg       0.92      0.94      0.92        45
+weighted avg       0.95      0.93      0.93        45
+"""
