@@ -67,16 +67,69 @@ print(matchOB.group()) # enjoy
 
 # apply()によるデータの追加===========================================================
 df = pd.DataFrame({
-    "col_A": [100, 300, 200, 400, 200, 700, 200],
-    "col_B": ["A", "B", "C", "D", "E", "D", "C"],
-    "col_C": [2, 3, 5, 1, 2, 3, 8]
+    "col_A": [100, 300, 200, 400, 200],
+    "col_B": ["A", "B", "C", "D", "E"],
+    "col_C": [2, 3, 5, 1, 2]
 })
 print(df.head())
 print()
+"""
+   col_A col_B  col_C
+0    100     A      2
+1    300     B      3
+2    200     C      5
+3    400     D      1
+4    200     E      2
+"""
 
 def func1(row):
     return row["col_A"] * row["col_C"]
 
 # dfをレコード単位でfunc1に渡して何らかの操作をしてもらう。戻り値は新たに作成する"col_D"に保存する。
 df["col_D"] = df.apply(func1, axis=1)
+# headは「上から5行だけ取得」
 print(df.head())
+print()
+"""
+   col_A col_B  col_C  col_D
+0    100     A      2    200
+1    300     B      3    900
+2    200     C      5   1000
+3    400     D      1    400
+4    200     E      2    400
+"""
+
+def add_rank(value):
+    if value >= 450:
+        return "High"
+    elif 0 <= value < 450:
+        return "Normal"
+    else:
+        return "Low"
+
+#この時点で新しいカラムが加わる
+df["Special"] = df["col_A"] * df["col_C"] / 2
+
+#単純な代入だけならSpecialのようにすればいい
+# ⇒ applyはデータ1件1件に対し、関数処理を実行する
+df["Rank"] = df["Special"].apply(add_rank)
+print(df.head())
+"""
+   col_A col_B  col_C  col_D  Special    Rank
+0    100     A      2    200    100.0  Normal
+1    300     B      3    900    450.0    High
+2    200     C      5   1000    500.0    High
+3    400     D      1    400    200.0  Normal
+4    200     E      2    400    200.0  Normal
+"""
+
+#該当カラムの最大値のセルだけを取得
+print(df["col_A"].max())
+# ⇒ 400
+
+#該当カラムの最大値を含む、レコードを取得
+print(df[df["col_A"]==df["col_A"].max()])
+"""
+   col_A col_B  col_C  col_D  Special    Rank
+3    400     D      1    400    200.0  Normal
+"""
