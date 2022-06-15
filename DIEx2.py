@@ -13,6 +13,17 @@ df.reset_index() ⇒ インデックスの再配置(追加や削除もこれ)
 行列の計算
 https://atarimae.biz/archives/23930
 
+ジニ不純度 ⇒ 決定木の不純度の指標
+1 - (P(0)**2 + P(1)**2)
+
+グリッドサーチとは、
+「ハイパーパラメータの候補を指定して、それぞれのハイパーパラメータで学習を行いテストデータセットに対する予測が最も良い値を選択する方法」
+⇒全パラメータの組み合わせを試すため、探索に時間がかかる
+
+scikit-learnで分散正規化を行うには、fit_transform()　を実行する
+#stdsc = StandardScaler()
+#stdsc.fit_transform(df)
+
 """
 
 """
@@ -81,6 +92,10 @@ print()
 3    400     D      1
 4    200     E      2
 """
+# len()でデータフレームの行数を取得できる
+print("【データフレームの行数】")
+print(len(df))
+print()
 
 def func1(row):
     return row["col_A"] * row["col_C"]
@@ -132,4 +147,16 @@ print(df[df["col_A"]==df["col_A"].max()])
 """
    col_A col_B  col_C  col_D  Special    Rank
 3    400     D      1    400    200.0  Normal
+"""
+
+# value_counts() ⇒ 読んで字のごとく
+print(df["col_A"].value_counts().to_frame())
+"""
+     col_A
+200      2
+100      1
+300      1
+400      1
+
+※to_frame()を付けない場合、「Name: col_A, dtype: int64」も最下行に表示される
 """
