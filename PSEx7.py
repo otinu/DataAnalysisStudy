@@ -14,9 +14,30 @@
 
 ・0の階乗は1, 1の対数は0
 
+・pandasのread_html() を使った際、そのページで複数のtableを取得した場合、
+　それらは配列として順番に格納される。
 
+
+・fillnaによる、最頻値での欠損値の穴埋め
+    (df.fillna(df.mode().iloc[0]))
+
+・Matplotlibにおいて、ヒストグラムはhistメソッドで、散布図はscatterメソッドで、折れ線グラフはplotメソッドで、
+　曲線グラフはsin()やcos()で描画することができる。
 """
 
 import numpy as np
 b = np.array([7,8,9])
 print(b.shape)
+# ⇒ (3,)
+
+import logging
+
+logging.basicConfig(
+format='%(levelname)s'
+)
+
+logging.debug('デバッグレベル')
+logging.info('INFOレベル')
+logging.warning('警告レベル')
+logging.error('エラーレベル')
+logging.critical('重大なエラー')
