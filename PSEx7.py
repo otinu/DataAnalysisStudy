@@ -27,6 +27,21 @@
 ・Jupyter Notebookでは、1単位のドキュメントのことをNotebookという。
 
 ・Numpyにおいて、numpy.ndarrayは次元数が任意なのに対し、numpy.matrixは2次元のみに特化している
+
+・MATLABスタイル
+    一つのオブジェクトに一つのプロット・一つのグラフを作成できる
+    ※一つのプロットに複数のグラフを作ることはできる
+    ⇒「できること」に注目すると、オブジェクト指向スタイルと差はない
+
+・オブジェクト指向スタイル
+    一つのオブジェクトに複数のサブプロット・複数のグラフを作成可能
+
+・散布図では、デフォルトではそれぞれのマーカーは丸で描画されるが、
+　marker引数にマーカーの形を指定することにより、様々な形のマーカーを使用することができる。
+
+・カテゴリー変数を数字に変換することをOne-Hotエンコーディングやダミー変数化という。
+　【例】「はい→1、いいえ→0」、　「黒→1、白→0」、　「あり→1、なし→0」
+
 """
 
 import numpy as np
@@ -40,6 +55,7 @@ c = np.concatenate([a, b], axis=0)
 print(c)
 print(c[-2])
 
+#DataFrameはvaluesを使うことでnumpy配列として取得できる
 import pandas as pd
 df = pd.DataFrame(np.arange(9).reshape(3, 3))
 print(df)
@@ -56,3 +72,12 @@ print(df.values)
  [3 4 5]
  [6 7 8]]
 """
+
+#アスペクト比の固定
+import matplotlib.pyplot as plt
+
+values = [10, 20, 70]
+
+plt.pie(values)
+plt.axis('equal') # 引数にequals を渡す
+plt.show()
