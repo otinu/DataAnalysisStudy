@@ -21,8 +21,8 @@ https://atarimae.biz/archives/23930
 ⇒全パラメータの組み合わせを試すため、探索に時間がかかる
 
 scikit-learnで分散正規化を行うには、fit_transform()　を実行する
-#stdsc = StandardScaler()
-#stdsc.fit_transform(df)
+    #stdsc = StandardScaler()
+    #stdsc.fit_transform(df)
 
 """
 
