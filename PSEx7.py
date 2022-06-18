@@ -23,6 +23,10 @@
 
 ・Matplotlibにおいて、ヒストグラムはhistメソッドで、散布図はscatterメソッドで、折れ線グラフはplotメソッドで、
 　曲線グラフはsin()やcos()で描画することができる。
+
+・Jupyter Notebookでは、1単位のドキュメントのことをNotebookという。
+
+・Numpyにおいて、numpy.ndarrayは次元数が任意なのに対し、numpy.matrixは2次元のみに特化している
 """
 
 import numpy as np
@@ -30,14 +34,25 @@ b = np.array([7,8,9])
 print(b.shape)
 # ⇒ (3,)
 
-import logging
+a = np.full((2, 3), np.pi).T.ravel()
+b = np.linspace(0, 1.25, 6)
+c = np.concatenate([a, b], axis=0)
+print(c)
+print(c[-2])
 
-logging.basicConfig(
-format='%(levelname)s'
-)
-
-logging.debug('デバッグレベル')
-logging.info('INFOレベル')
-logging.warning('警告レベル')
-logging.error('エラーレベル')
-logging.critical('重大なエラー')
+import pandas as pd
+df = pd.DataFrame(np.arange(9).reshape(3, 3))
+print(df)
+print()
+"""
+   0  1  2
+0  0  1  2
+1  3  4  5
+2  6  7  8
+"""
+print(df.values)
+"""
+[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+"""
