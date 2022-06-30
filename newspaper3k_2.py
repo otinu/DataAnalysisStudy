@@ -9,4 +9,5 @@ article.download()
 article.parse()
 print(article.publish_date)
 print(article.authors)
+# 改行をなくして出力
 print(article.text.replace("\n",""))
