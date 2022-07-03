@@ -2,8 +2,12 @@ import newspaper
 import csv
 import datetime
 
+# 環境をVSCに変えたとき、コード内に下記を追記するようエラー文が発生
+import nltk
+nltk.download('punkt')
+
 # サイトによってはスクレイピングは禁止されているため、事前に確認をすること
-url = "〇〇"
+url = "https://diamond-rm.net/store/197374/"
 
 csv_date = datetime.datetime.today().strftime("%Y%m%d")
 csv_file_name = "bloomberg_" + csv_date + ".csv"
