@@ -28,6 +28,8 @@ response.status_code
 response.text
 response = requests.get(url, timeout=3)
 response.text[:500]
+# Googleで「python」を検索した場合のURLはhttps://www.google.com/search?q=python
+# ⇒キーに「q」、バリューに「python」を指定
 param = {"q": "python"}
 response = requests.get("https://www.google.co.jp/search", params=param)
 print(response.text)

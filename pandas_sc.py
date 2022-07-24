@@ -36,5 +36,43 @@ data[0].head()
 # グラフに変換できるかデータ型の確認。float64ならOK
 print(data[0]["Adj Close**"].dtype)
 data[0]["Adj Close**"].plot(title="AAPL Stock Price",grid=True)
+# matplotlibを利用してグラフを可視化
 plt.show()
+
+# CSV形式で保存
+# 第一引数: 保存先のディレクトリ(省略した場合はカレントディレクトリに保存)
+# 第二引数: ファイル名の指定
 data[0].to_csv("AAPL_Stock.csv")
+
+
+""" Seleniumとの組み合わせにより、画面をスクロールしてスクレイピングを実行
+
+ # 必要なライブラリのインポート
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from time import sleep
+ 
+# Seleniumをヘッドレスモードで実行し、urlのページを開く
+url = 'https://finance.yahoo.com/quote/AAPL/history?p=AAPL'
+options = Options()
+options.add_argument('--headless')
+driver = webdriver.Chrome('C:\Test_Folder\chromedriver_win32\chromedriver', options=options) #ディレクトリはchromedriverの場所に変更してください
+driver.get(url)
+sleep(2)
+ 
+# 画面スクロール
+for i in range(10): #スクロール回数の指定
+    driver.execute_script('window.scrollTo(0, window.scrollY + 1080)')
+    sleep(0.5)
+ 
+#Seleniumで取得したテーブルをPandasのread_htmlで読み込み
+table = driver.find_element_by_xpath('//table/..')
+table_html = table.get_attribute('innerHTML')
+data = pd.read_html(table_htm, header=0)
+driver.close()
+ 
+#取得結果の表示(先頭５行)
+data[0].head()
+
+"""
