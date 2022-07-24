@@ -11,9 +11,11 @@ url = "https://diamond-rm.net/store/197374/"
 
 csv_date = datetime.datetime.today().strftime("%Y%m%d")
 csv_file_name = "bloomberg_" + csv_date + ".csv"
+# cp932でSJisを指定　errors="ignore" でエラー時の書式指定なし
 f = open(csv_file_name, "w", encoding="cp932", errors="ignore")
 csv_header = ["記事番号", "タイトル", "URL", "サマリー"]
 writer = csv.writer(f, lineterminator="\n")
+# writerowで一行ずつ書き込み
 writer.writerow(csv_header)
 
 website = newspaper.build(url, memoize_articles = False)
