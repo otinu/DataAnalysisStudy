@@ -39,3 +39,37 @@ if error_flg is False:
         sleep(1)
     except Exception:
         pass
+
+target_username = "paulnicklen"
+if error_flg is False:
+    try:
+        # ポールさんのページのURLを作成
+        target_profile_url = target_url + target_username
+        # ポールさんのページへアクセス
+        driver.get(target_profile_url)
+        sleep(3)
+    except Exception:
+        print("検索時にエラーが発生しました。")
+        error_flg = True
+if error_flg is False:
+    try:
+        post_count = driver.find_element_by_xpath("//span[text()='投稿']").text #XPathの場合
+#         post_count = driver.find_element_by_css_selector("span.g47SY").text #CSSセレクタの場合(テキストを指定するCSSセレクタはありません)
+        post_count = post_count.replace("投稿","").replace("件","")
+        print("投稿件数: " + post_count)
+        post_count = int(post_count)
+        if post_count > 12:
+            scroll_count = int(post_count/12) + 1
+            try:
+                for i in range(scroll_count):
+                    # 画面のスクロール
+                    driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
+                    sleep(2)
+                    if i > 5:
+                        break
+            except Exception:
+                print("画面スクロール中にエラーが発生しました。")
+                error_flg = True
+    except Exception:
+        print("投稿数が取得できませんでした。")
+        error_flg = True
