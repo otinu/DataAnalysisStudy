@@ -67,9 +67,40 @@ if error_flg is False:
                     sleep(2)
                     if i > 5:
                         break
+                # ①dict.fromkeys(all_images) でスクレイピング中に重複してしまう要素から重複部分を取り除く
+                # ② list(①)で再度リスト型に戻す
+                all_images = list(dict.fromkeys(all_images))
+                for index, image in enumerate(all_images):
+                    print("画像番号: " + str(index))
+                    # imgタグのsrc属性の値を表示
+                    print("image['src']: " + image['src'], end="\n\n")
+                    
             except Exception:
                 print("画面スクロール中にエラーが発生しました。")
                 error_flg = True
     except Exception:
         print("投稿数が取得できませんでした。")
         error_flg = True
+
+import requests
+import re
+import os
+import shutil
+
+path = r"C:\Test_Folder\Instagram\photo"
+if error_flg is False:
+    try:
+        for index, image in enumerate(all_images):
+            filename = "image_" + str(index) + ".jpg"
+            image_path = os.path.join(path, filename)
+            image_link = image["src"]
+            url_ptn = re.compile(r"^(http|https)://") 
+            res = url_ptn.match(image_link)
+            if res:
+                response = requests.get(image_link, stream=True)
+                with open(image_path, "wb") as file:
+                    shutil.copyfileobj(response.raw, file)
+    except Exception as e:
+        print(e)
+        print(str(index) + "番目の画像のダウンロード・保存時にエラーが発生しました。")
+        print("画像へのリンク: " + image_link)
