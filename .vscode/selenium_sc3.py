@@ -93,7 +93,7 @@ import re
 import os
 import shutil
 
-path = r"C:\Test_Folder\Instagram\photo"
+path = r"C:\Users\fitsh\WorkSpace\DataAnalysisStudy\Instagram"
 if error_flg is False:
     try:
         for index, image in enumerate(all_images):
@@ -109,6 +109,7 @@ if error_flg is False:
                 response = requests.get(image_link, stream=True)
                 with open(image_path, "wb") as file:
                     # 画像データの書き込み
+                    # response.raw で画像データをバイナリ形式で取得
                     shutil.copyfileobj(response.raw, file)
     except Exception as e:
         print(e)
