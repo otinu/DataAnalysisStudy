@@ -1,7 +1,9 @@
+from re import L
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 
+# 非公開ファイルに定数の一覧を記述
 import tweet_const as const
 
 """
@@ -18,14 +20,29 @@ error_flg = False
 try:
     login_button = driver.find_element_by_xpath("//*[@id='react-root']/div/div/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[5]/a")
     login_button.click()
-    sleep(3)
+    sleep(1)
 
-    account_fill = driver.find_element_by_xpath("//*[@id='react-root']/div/div/div/main/div/div/div/div[2]/div[2]/div/div[5]/label/div/div[2]/div/input")
+    account_fill = driver.find_element_by_name("text")
     account_fill.send_keys(const.ACCOUNTINFO)
     sleep(1)
-    # 次へ押下
-    driver.find_element_by_xpath("//*[@id='react-root']/div/div/div/main/div/div/div/div[2]/div[2]/div/div[6]").click()
+    driver.find_element_by_xpath("//span[text()='次へ']").click()
     sleep(1)
+    account_fill = driver.find_element_by_name("text")
+    account_fill.send_keys(const.USERNAME)
+    driver.find_element_by_xpath("//span[text()='次へ']").click()
+    sleep(1)
+    account_fill = driver.find_element_by_name("password")
+    account_fill.send_keys(const.PASSWORD)
+    driver.find_element_by_xpath("//span[text()='ログイン']").click()
+    sleep(1)
+
+    account_menu = driver.find_element_by_xpath("//div[@aria-label='アカウントメニュー']").click()
+    logout_text = "@" + const.USERNAME + "からログアウト"
+    driver.find_element_by_xpath("//span[text()='"+ logout_text +"']").click()
+    sleep(1)
+    driver.find_element_by_xpath("//span[text()='ログアウト']").click()
+    sleep(1)
+
     
 
 
