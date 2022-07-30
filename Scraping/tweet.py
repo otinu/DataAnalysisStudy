@@ -3,9 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+import csv
+import datetime
+import newspaper
 
-
-# 非公開ファイルに定数の一覧を記述
 import tweet_const as tc
 import tweet_method as tm
 
@@ -38,12 +39,13 @@ try:
     sleep(1)
 
     search_fill = driver.find_element_by_xpath("//input[@aria-label='検索クエリ']")
-    search_keyword = "フカセ釣り"
-    search_fill.send_keys(search_keyword)
+    search_fill.send_keys(tc.search_keyword)
     sleep(2)
     search_fill.send_keys(Keys.ENTER)
-    #driver.find_element_by_xpath("//span[contains(text(), search_keyword)]").click()
+    #driver.find_element_by_xpath("//span[contains(text(), tc.search_keyword)]").click()
     #driver.find_element_by_xpath("//div[@data-testidl='typeaheadResult']").click()
+
+
 
 except BaseException as be:
     tm.print_error(be)
@@ -61,3 +63,4 @@ except Exception:
     print("ログアウトに失敗しました")
 """
 
+#react-root > div > div > div.css-1dbjc4n.r-18u37iz.r-13qz1uu.r-417010 > main > div > div > div > div.css-1dbjc4n.r-14lw9ot.r-jxzhtn.r-1ljd8xs.r-13l2t4g.r-1phboty.r-1jgb5lz.r-11wrixw.r-61z16t.r-1ye8kvj.r-13qz1uu.r-184en5c > div > div:nth-child(2) > div > section > div > div > div:nth-child(1)

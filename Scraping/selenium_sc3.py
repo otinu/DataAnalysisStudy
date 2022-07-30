@@ -68,7 +68,7 @@ if error_flg is False:
                     soup = BeautifulSoup(driver.page_source, "html.parser")
                     for image in soup.find_all("img"):
                         all_images.append(image)
-                    # 画面のスクロール
+                    # 画面のスクロール ⇒ ブラウザ画面のheight分スクロールする
                     driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
                     sleep(2)
                     if i > 5:
