@@ -3,6 +3,8 @@ import tweepy
 from datetime import datetime,timezone
 import pytz
 import pandas as pd
+import json
+
 import tweet_const as tc
 
 
@@ -21,10 +23,11 @@ tweets_data = tweets.data
 if tweets_data != None:
     for tweet in tweets_data:
         obj = {}
-        obj["tweet_id"] = tweet.id      # Tweet_ID
-        obj["text"] = tweet.text  # Tweet Content
+        obj["tweet_id"] = tweet.id
+        obj["created_at"] = tweet.tweet_fields
+        obj["text"] = tweet.text
         results.append(obj)
 else:
     results.append('')
     
-print(results)
+print(json.dumps(results, indent=2))

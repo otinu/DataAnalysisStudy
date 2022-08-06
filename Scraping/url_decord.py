@@ -6,7 +6,7 @@ import requests as req
 import urllib
 
 # アクセスするurl
-url = '日本語を含むURL'
+url = 'https://www.makuake.com/project/feelmorys/?from=keywordsearch&keyword=%E9%87%A3%E3%82%8A&disp_order=2'
 url_decord = urllib.parse.unquote(url)
 
 
@@ -17,7 +17,7 @@ INTERVAL = 3
 ID_LIST = ['menu-item-680', 'menu-item-681', 'menu-item-682']
 
 # ブラウザ起動
-driver_path = "./Driver/chromedriver"
+driver_path = "./chromedriver"
 driver = webdriver.Chrome(executable_path=driver_path)
 
 # windowサイズをmaxにする

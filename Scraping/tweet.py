@@ -3,9 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 from selenium.webdriver.common.keys import Keys
-import csv
-import datetime
-import newspaper
 
 import tweet_const as tc
 import tweet_method as tm
